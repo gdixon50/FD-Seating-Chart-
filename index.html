@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Seating Chart with Firebase Real-Time Updates</title>
+    <title>Updated Interactive Seating Chart with Firebase Real-Time Updates</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,7 +35,7 @@
     </style>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-        import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAeNBLPpLH-TqkVdnasE_ELse9yJVaj9VU",
@@ -52,22 +51,19 @@
         const db = getFirestore(app);
 
         const generalSeats = {
-            "Announcers": 1,
+            "Theresa Smith": 5,
             "Brittany Moss": 1,
             "Laurie": 1,
-            "Theresa Smith": 3,
             "Tiffany (youth)": 1,
             "William Sullivan": 2,
             "Geneva": 2,
-            "Frank Smith Sr": 1,
             "John Smith": 3
         };
 
         const vipSeats = {
-            "Cheryl": 3,
+            "Cheryl": 2,
             "Evangelist Pam": 1,
             "Lynda Hale": 2,
-            "Anna Green": 4,
             "Pastor Nikolas Lathan (Table 2)": 3
         };
 
@@ -87,10 +83,8 @@
                     bubble.className = 'bubble';
                     const seatId = `${category}_${name}_${i}`;
 
-                    // Firestore reference
                     const seatRef = doc(db, 'seats', seatId);
 
-                    // Real-time listener
                     onSnapshot(seatRef, (docSnap) => {
                         if (docSnap.exists() && docSnap.data().filled) {
                             bubble.classList.add('filled');
@@ -99,7 +93,6 @@
                         }
                     });
 
-                    // Click event to toggle
                     bubble.addEventListener('click', async () => {
                         const filled = !bubble.classList.contains('filled');
                         await setDoc(seatRef, { filled });
@@ -117,10 +110,13 @@
     </script>
 </head>
 <body>
-    <h1>Interactive Seating Chart (with Firebase Real-Time Updates)</h1>
+    <h1>Updated Interactive Seating Chart (with Firebase Real-Time Updates)</h1>
     <h2>General Open Seats</h2>
     <div id="general-seats"></div>
     <h2>VIP (Ministry)</h2>
     <div id="vip-seats"></div>
+</body>
+</html>
+
 </body>
 </html>
