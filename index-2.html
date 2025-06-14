@@ -52,20 +52,18 @@
         const db = getFirestore(app);
 
         const generalSeats = {
-            "Theresa Smith": 5,
-            "Brittany Moss": 1,
             "Laurie": 1,
             "Tiffany (youth)": 1,
             "William Sullivan": 2,
-            "Geneva": 2,
-            "John Smith": 3
+            "John Smith": 3,
+            Evangelist Pam: 1,
+            Jerry Young: 2,
+            Brelinda: 1,
         };
 
         const vipSeats = {
-            "Cheryl": 2,
-            "Evangelist Pam": 1,
-            "Lynda Hale": 2,
-            "Pastor Nikolas Lathan (Table 2)": 3
+            "Lynda Hale": 1,
+            "Pastor Nikolas Lathan (Table 2)": 1,
         };
 
         async function renderSeating(containerId, seatsData, category) {
